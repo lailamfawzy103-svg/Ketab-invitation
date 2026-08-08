@@ -1,1 +1,0 @@
-const openButton = document.getElementById("openButton"); const invitationStage = document.getElementById("invitationStage"); let opened = false; openButton.addEventListener("click", () => { if (opened) return; opened = true; invitationStage.classList.add("opened"); }); 
