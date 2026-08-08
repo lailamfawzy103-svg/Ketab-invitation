@@ -1,0 +1,912 @@
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      #faf7f1 0%,
+      #eee6da 62%,
+      #e2d7c8 100%
+    );
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* =====================================================
+   PAGE
+===================================================== */
+
+.page {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px;
+}
+
+
+/* =====================================================
+   STAGE
+
+   حافظنا على نسبة الصورة
+===================================================== */
+
+.invitation-stage {
+  position: relative;
+
+  height: min(94vh, 1465px);
+
+  aspect-ratio: 1040 / 1465;
+
+  width: auto;
+
+  max-width: 97vw;
+
+  isolation: isolate;
+}
+
+
+/* =====================================================
+   ORIGINAL INVITATION
+===================================================== */
+
+.invitation {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 1;
+
+  overflow: hidden;
+
+  background: #f7f1e8;
+}
+
+
+.invitation-image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: fill;
+
+  object-position: center;
+
+  user-select: none;
+
+  -webkit-user-drag: none;
+}
+
+
+/* =====================================================
+   GLASS SYSTEM
+===================================================== */
+
+.glass-system {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 20;
+
+  pointer-events: none;
+}
+
+
+/* =====================================================
+   GLASS DOOR
+===================================================== */
+
+.glass-door {
+  position: absolute;
+
+  top: 0;
+
+  width: 50%;
+  height: 100%;
+
+  overflow: hidden;
+
+  pointer-events: auto;
+
+  border-top:
+    1px solid rgba(255,255,255,.95);
+
+  border-bottom:
+    1px solid rgba(255,255,255,.9);
+
+  background:
+    rgba(246,240,230,.22);
+
+  transition:
+    transform 1.55s
+    cubic-bezier(.16,1,.3,1),
+
+    opacity .55s ease;
+
+  will-change: transform;
+}
+
+
+/* =====================================================
+   LEFT
+===================================================== */
+
+.glass-left {
+  left: 0;
+
+  border-left:
+    1px solid rgba(105,76,45,.18);
+}
+
+
+/* =====================================================
+   RIGHT
+===================================================== */
+
+.glass-right {
+  right: 0;
+
+  border-right:
+    1px solid rgba(105,76,45,.18);
+}
+
+
+/* =====================================================
+   BLURRED INVITATION
+
+   دي أهم طبقة في الكود كله.
+
+   بنحط نسخة من الصورة نفسها داخل الزجاج
+   ونblurها فعليًا بدل الاعتماد على backdrop-filter.
+===================================================== */
+
+.blurred-invitation {
+  position: absolute;
+
+  z-index: 1;
+
+  top: -4%;
+  bottom: -4%;
+
+  width: 204%;
+
+  background-image:
+    url("./A6-2.png");
+
+  background-repeat: no-repeat;
+
+  background-size:
+    100% 100%;
+
+  filter:
+    blur(13px);
+
+  transform:
+    scale(1.035);
+
+  opacity: .68;
+
+  pointer-events: none;
+}
+
+
+/* LEFT IMAGE POSITION */
+
+.glass-left
+.blurred-invitation {
+  left: -2%;
+}
+
+
+/* RIGHT IMAGE POSITION */
+
+.glass-right
+.blurred-invitation {
+  right: -102%;
+}
+
+
+/* =====================================================
+   GLASS TINT
+===================================================== */
+
+.glass-tint {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 3;
+
+  pointer-events: none;
+
+  background:
+
+    linear-gradient(
+      120deg,
+
+      rgba(255,255,255,.56) 0%,
+
+      rgba(248,242,233,.48) 24%,
+
+      rgba(255,255,255,.34) 48%,
+
+      rgba(240,232,220,.48) 72%,
+
+      rgba(255,255,255,.58) 100%
+    );
+
+  /*
+     ده اللي يمنع قراءة الكلام
+  */
+
+  backdrop-filter:
+    blur(2px);
+
+  -webkit-backdrop-filter:
+    blur(2px);
+}
+
+
+/* =====================================================
+   EXTRA FROST
+===================================================== */
+
+.glass-door::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 4;
+
+  pointer-events: none;
+
+  background:
+
+    radial-gradient(
+      ellipse at 30% 20%,
+      rgba(255,255,255,.42),
+      transparent 38%
+    ),
+
+    radial-gradient(
+      ellipse at 80% 70%,
+      rgba(255,255,255,.25),
+      transparent 42%
+    );
+
+  opacity: .7;
+}
+
+
+/* =====================================================
+   GLASS PATTERN
+
+   Pattern ناعم ومنظم
+===================================================== */
+
+.glass-pattern {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 6;
+
+  pointer-events: none;
+
+  opacity: .42;
+
+  background:
+
+    radial-gradient(
+      circle at 0 0,
+      transparent 0 20px,
+      rgba(119,87,51,.17) 21px,
+      transparent 22px
+    ),
+
+    radial-gradient(
+      circle at 100% 0,
+      transparent 0 20px,
+      rgba(119,87,51,.17) 21px,
+      transparent 22px
+    ),
+
+    radial-gradient(
+      circle at 0 100%,
+      transparent 0 20px,
+      rgba(119,87,51,.17) 21px,
+      transparent 22px
+    ),
+
+    radial-gradient(
+      circle at 100% 100%,
+      transparent 0 20px,
+      rgba(119,87,51,.17) 21px,
+      transparent 22px
+    ),
+
+    repeating-linear-gradient(
+      45deg,
+      transparent 0,
+      transparent 27px,
+      rgba(119,87,51,.045) 28px,
+      transparent 29px,
+      transparent 55px
+    ),
+
+    repeating-linear-gradient(
+      -45deg,
+      transparent 0,
+      transparent 27px,
+      rgba(119,87,51,.04) 28px,
+      transparent 29px,
+      transparent 55px
+    );
+
+  background-size:
+    82px 82px,
+    82px 82px,
+    82px 82px,
+    82px 82px,
+    56px 56px,
+    56px 56px;
+
+  mix-blend-mode: multiply;
+}
+
+
+/* =====================================================
+   GLASS SHINE
+===================================================== */
+
+.glass-shine {
+  position: absolute;
+
+  z-index: 8;
+
+  top: -15%;
+
+  left: 25%;
+
+  width: 17%;
+
+  height: 130%;
+
+  pointer-events: none;
+
+  transform: rotate(17deg);
+
+  background:
+
+    linear-gradient(
+      90deg,
+
+      transparent,
+
+      rgba(255,255,255,.10) 20%,
+
+      rgba(255,255,255,.78) 50%,
+
+      rgba(255,255,255,.10) 80%,
+
+      transparent
+    );
+
+  filter:
+    blur(6px);
+
+  opacity: .48;
+
+  animation:
+    shine 6s ease-in-out infinite;
+}
+
+
+.glass-right
+.glass-shine {
+  animation-delay: -3s;
+}
+
+
+@keyframes shine {
+
+  0%,
+  100% {
+    transform:
+      translateX(-10%)
+      rotate(17deg);
+
+    opacity: .28;
+  }
+
+  50% {
+    transform:
+      translateX(12%)
+      rotate(17deg);
+
+    opacity: .68;
+  }
+}
+
+
+/* =====================================================
+   GLASS FRAME
+===================================================== */
+
+.glass-frame {
+  position: absolute;
+
+  inset: 11px;
+
+  z-index: 12;
+
+  pointer-events: none;
+
+  border:
+    1px solid rgba(119,87,50,.20);
+
+  box-shadow:
+    inset 0 0 0 1px
+    rgba(255,255,255,.72);
+}
+
+
+.glass-frame::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 5px;
+
+  border:
+    1px solid rgba(255,255,255,.52);
+}
+
+
+/* =====================================================
+   CENTER SEAM
+===================================================== */
+
+.glass-left::after,
+.glass-right::after {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+
+  width: 1px;
+
+  z-index: 15;
+
+  background:
+
+    linear-gradient(
+      to bottom,
+
+      transparent,
+
+      rgba(102,74,45,.25) 12%,
+
+      rgba(255,255,255,.95) 50%,
+
+      rgba(102,74,45,.25) 88%,
+
+      transparent
+    );
+}
+
+
+.glass-left::after {
+  right: 0;
+}
+
+
+.glass-right::after {
+  left: 0;
+}
+
+
+/* =====================================================
+   MONOGRAM BUTTON
+===================================================== */
+
+.monogram {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 104px;
+  height: 104px;
+
+  padding: 0;
+
+  border: none;
+
+  outline: none;
+
+  background: transparent;
+
+  transform:
+    translate(-50%, -50%);
+
+  cursor: pointer;
+
+  pointer-events: auto;
+
+  z-index: 100;
+
+  -webkit-tap-highlight-color: transparent;
+
+  transition:
+    transform .35s ease,
+    opacity .55s ease;
+}
+
+
+/* =====================================================
+   MONOGRAM SHADOW
+===================================================== */
+
+.mono-shadow {
+  position: absolute;
+
+  inset: 7px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(62,42,25,.25);
+
+  filter:
+    blur(8px);
+
+  transform:
+    translateY(6px);
+}
+
+
+/* =====================================================
+   MONOGRAM DISC
+===================================================== */
+
+.mono-disc {
+  position: absolute;
+
+  inset: 0;
+
+  border-radius: 50%;
+
+  overflow: hidden;
+
+  background:
+
+    radial-gradient(
+      circle at 30% 23%,
+
+      #fffefa 0%,
+
+      #f6eee2 30%,
+
+      #e9dccb 67%,
+
+      #d0b99b 100%
+    );
+
+  border:
+    1px solid rgba(112,78,45,.62);
+
+  box-shadow:
+
+    0 3px 7px
+    rgba(62,42,25,.25),
+
+    inset 0 1px 0
+    rgba(255,255,255,.95),
+
+    inset 0 -3px 5px
+    rgba(89,59,34,.22);
+}
+
+
+/* =====================================================
+   MONOGRAM RINGS
+===================================================== */
+
+.mono-ring {
+  position: absolute;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+
+.mono-ring.outer {
+  inset: 5px;
+
+  border:
+    1px solid rgba(104,72,41,.58);
+
+  box-shadow:
+    inset 0 0 0 1px
+    rgba(255,255,255,.78);
+}
+
+
+.mono-ring.inner {
+  inset: 11px;
+
+  border:
+    1px solid rgba(104,72,41,.30);
+}
+
+
+/* =====================================================
+   MONOGRAM LETTERS
+
+   A و S متداخلين شوية
+   عشان يطلعوا Monogram مش مجرد حرفين
+===================================================== */
+
+.mono-letter {
+  position: absolute;
+
+  top: 50%;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-weight: 500;
+
+  color: #76502e;
+
+  line-height: .8;
+
+  text-shadow:
+
+    1px 1px 0
+    rgba(255,255,255,.95),
+
+    1px 2px 2px
+    rgba(67,43,25,.28);
+
+  z-index: 10;
+}
+
+
+.mono-letter.a {
+
+  left: 39px;
+
+  font-size: 54px;
+
+  transform:
+    translate(-50%, -55%)
+    rotate(-7deg)
+    scaleX(.88);
+}
+
+
+.mono-letter.s {
+
+  left: 60px;
+
+  font-size: 57px;
+
+  transform:
+    translate(-50%, -45%)
+    rotate(4deg)
+    scaleX(.88);
+}
+
+
+/* =====================================================
+   MONOGRAM HIGHLIGHT
+===================================================== */
+
+.mono-highlight {
+  position: absolute;
+
+  top: 12px;
+  left: 21px;
+
+  width: 48px;
+  height: 14px;
+
+  border-radius: 50%;
+
+  background:
+
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,255,255,.82),
+      transparent
+    );
+
+  filter:
+    blur(4px);
+
+  opacity: .58;
+
+  transform:
+    rotate(-25deg);
+}
+
+
+/* =====================================================
+   HOVER
+===================================================== */
+
+.monogram:hover {
+  transform:
+    translate(-50%, -50%)
+    scale(1.04);
+}
+
+
+.monogram:active {
+  transform:
+    translate(-50%, -50%)
+    scale(.98);
+}
+
+
+/* =====================================================
+   OPEN ANIMATION
+===================================================== */
+
+.invitation-stage.opened
+.glass-left {
+
+  transform:
+    translate3d(-100%, 0, 0);
+
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+
+.invitation-stage.opened
+.glass-right {
+
+  transform:
+    translate3d(100%, 0, 0);
+
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+
+/*
+   المونوجرام يمشي مع الجزء اليمين
+*/
+
+.invitation-stage.opened
+.monogram {
+
+  transform:
+    translate(
+      calc(50% + 50vw),
+      -50%
+    );
+
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+  .page {
+    padding: 6px;
+  }
+
+  .invitation-stage {
+
+    height: min(93vh, 1465px);
+
+    max-width: 98vw;
+  }
+
+  .glass-frame {
+    inset: 8px;
+  }
+
+  .glass-frame::after {
+    inset: 4px;
+  }
+
+  .monogram {
+
+    width: 88px;
+    height: 88px;
+  }
+
+  .mono-letter.a {
+
+    left: 33px;
+
+    font-size: 46px;
+  }
+
+  .mono-letter.s {
+
+    left: 52px;
+
+    font-size: 49px;
+  }
+}
+
+
+/* =====================================================
+   SMALL PHONES
+===================================================== */
+
+@media (max-width: 380px) {
+
+  .invitation-stage {
+
+    height: min(90vh, 1465px);
+
+    max-width: 98vw;
+  }
+
+  .monogram {
+
+    width: 82px;
+    height: 82px;
+  }
+
+  .mono-letter.a {
+
+    left: 30px;
+
+    font-size: 43px;
+  }
+
+  .mono-letter.s {
+
+    left: 48px;
+
+    font-size: 45px;
+  }
+}
