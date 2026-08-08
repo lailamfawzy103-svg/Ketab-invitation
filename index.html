@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>AS Invitation</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+  <main
+    class="invitation-stage"
+    id="invitationStage"
+  >
+
+    <!-- =========================================
+         ORIGINAL INVITATION
+    ========================================== -->
+
+    <div class="invitation">
+
+      <!--
+        الصورة موجودة داخل GitHub
+        بجانب index.html
+      -->
+
+      <img
+        src="./A6-2.png"
+        alt=""
+        class="invitation-image"
+        draggable="false"
+      >
+
+    </div>
+
+
+    <!-- =========================================
+         GLASS COVER
+    ========================================== -->
+
+    <div class="glass-layer">
+
+
+      <!-- =======================================
+           LEFT GLASS PANEL
+      ======================================== -->
+
+      <div class="glass-panel glass-left">
+
+        <div class="glass-border"></div>
+
+        <div class="glass-shine shine-left"></div>
+
+        <div class="glass-highlight highlight-left"></div>
+
+      </div>
+
+
+      <!-- =======================================
+           RIGHT GLASS PANEL
+      ======================================== -->
+
+      <div class="glass-panel glass-right">
+
+        <div class="glass-border"></div>
+
+        <div class="glass-shine shine-right"></div>
+
+        <div class="glass-highlight highlight-right"></div>
+
+      </div>
+
+
+      <!-- =======================================
+           CENTER MONOGRAM
+      ======================================== -->
+
+      <button
+        class="monogram"
+        id="openButton"
+        aria-label="فتح الدعوة"
+        type="button"
+      >
+
+        <span class="monogram-ring outer"></span>
+
+        <span class="monogram-ring inner"></span>
+
+        <span class="letter letter-a">A</span>
+
+        <span class="letter letter-s">S</span>
+
+        <span class="monogram-shine"></span>
+
+      </button>
+
+    </div>
+
+  </main>
+
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
